@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+ <link rel="stylesheet" type="text/css" href="../ressources/css/ngo.css"></link>
+<link rel="stylesheet" type="text/css" href="../ressources/css/monStyle.css"></link>
+<link rel="stylesheet" type="text/css" href="../resource/css/domi.css"></link>
+  <title><ui:insert name="title">PNEUMA</ui:insert></title>
+</h:head>
+
+<h:body>
+<p:layout fullPage="true">
+<p:layoutUnit position="north">
+<div id="header">
+    <ui:insert name="header">
+    	<ui:include  src="/templates/header.xhtml"></ui:include>
+    </ui:insert>
+</div>
+</p:layoutUnit>
+
+<p:layoutUnit position="west" size="225" header="Menu" collapsible="true">
+
+	<h:form>
+	
+		<p:panelMenu style="width:300px">
+            
+            <p:submenu label="Paramétrage">
+                <p:menuitem value="Genres" outcome="/pages/genre.xhtml" icon="pi pi-upload"/>
+                <p:menuitem value="Questions" outcome="/pages/question.xhtml" icon="pi pi-upload"/>
+                <p:menuitem value="Réponses" outcome="/pages/reponse.xhtml" icon="pi pi-upload"/>
+            </p:submenu>
+            <p:submenu label="Audition">
+                <p:menuitem value="Faire une audition" outcome="/pages/audition.xhtml" icon="pi pi-upload"/>
+                <p:menuitem value="Consulter les résultats" outcome="/pages/consultation_resultat.xhtml" icon="pi pi-upload"/>
+            </p:submenu>
+            
+            <p:submenu label="Editions">
+                <p:menuitem value="Fiche d'audtion indiduelle" icon="pi pi-upload"/>
+                <p:menuitem value="Fiche des audités"  icon="pi pi-upload"/>
+            </p:submenu>
+            
+            
+        </p:panelMenu>
+	
+		<!--<p:panelMenu >	
+			<p:submenu label="Paramétrage">
+			<p:menuitem value="Genre" outcome="/pages/genre.xhtml"/>
+			 <p:menuitem value="Question" outcome="/pages/question.xhtml"/>
+			<p:menuitem value="Reponse" outcome="/pages/reponse.xhtml"/> 
+			</p:submenu>
+		</p:panelMenu>-->
+	</h:form>
+</p:layoutUnit>
+
+<p:layoutUnit position="center">
+<div id="content">
+  <ui:insert name="body">    	
+  </ui:insert>
+</div>
+</p:layoutUnit>
+
+<p:layoutUnit position="south">
+<div id="footer">
+  <ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+  </ui:insert>
+</div>
+</p:layoutUnit>
+</p:layout>
+</h:body>
+
+</html>

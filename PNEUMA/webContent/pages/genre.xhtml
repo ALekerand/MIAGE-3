@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/template.xhtml">
+			<ui:define name="body">
+				<h:form id="form">
+		<fieldset>
+ 	<legend>Informations du Genre</legend>		
+<h:panelGrid columns="2" cellpadding="10">
+	<p:outputLabel for="input" value="libéllé genre"></p:outputLabel>
+	<p:inputText id="input" value="#{genreController.genre.libelleGenre}" required="true" requiredMessage="Veuillez resseigner ce champ SVP"></p:inputText>	
+</h:panelGrid>
+</fieldset>
+<br/>
+<p:toolbar >
+			<f:facet name="left">
+				<p:commandButton value="Enregistrer" action="#{genreController.enregistrer}" update="form" binding="#{genreController.btnEnregistrer}"></p:commandButton>
+				<p:commandButton value="Annuler"  action="#{genreController.annuler}" update="form" binding="#{genreController.btnAnnuler}"></p:commandButton>
+				<p:commandButton value="Modifier"  action="#{genreController.modifier}" update="form" binding="#{genreController.btnModifier}"></p:commandButton>
+			</f:facet>
+		</p:toolbar>
+		<br/>
+		
+	<p:dataTable  var="dom" value="#{genreController.listGenre}"  selectionMode="single" selection="#{genreController.selectedGenre}" rowKey="#{dom.idGenre}">
+ 
+ <f:facet name="header">
+            LISTE DES GENRES
+        </f:facet>
+     <p:ajax event="rowSelect" process="@this"  update="form" listener="#{genreController.selectionnerLigne}"></p:ajax>
+   		
+   		<p:column headerText="Code" style="width:30%">
+        <h:outputText value="#{dom.idGenre}"/>
+        </p:column>
+        
+        <p:column headerText="Libellé">
+        <h:outputText value="#{dom.libelleGenre}"/>
+        </p:column>
+        
+        </p:dataTable>
+				
+				</h:form>
+			</ui:define>
+	</ui:composition>
+
+</html>

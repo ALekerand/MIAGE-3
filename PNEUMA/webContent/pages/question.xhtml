@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/template.xhtml">
+			<ui:define name="body">
+				<h:form id="form">
+		<fieldset>
+ 	<legend>ENREGISTREMENT DES QUESTIONS</legend> 	
+<h:panelGrid columns="4" cellpadding="10">
+	<p:outputLabel for="input_numero" value="Numéro"></p:outputLabel>
+	<p:inputText id="input_numero" value="#{questionController.question.numeroQuest}" size="1" required="true" requiredMessage="Veuillez resseigner ce champ SVP"></p:inputText>	
+
+	<p:outputLabel for="input" value="Libéllé"></p:outputLabel>
+	<p:inputTextarea id="input" rows="2" cols="80" value="#{questionController.question.libelleQuest}"   required="true" requiredMessage="Veuillez resseigner ce champ SVP"></p:inputTextarea>	
+
+						<p:outputLabel value="#{audition.question1.numeroQuest}" readonly="true"/>
+                        <p:inputText value="#{audition.question1.libelleQuest}" readonly="true"/>
+</h:panelGrid>
+</fieldset>
+<br/>
+<p:toolbar >
+			<f:facet name="left">
+				<p:commandButton value="Enregistrer" action="#{questionController.enregistrer}" update="form" binding="#{questionController.btnEnregistrer}"></p:commandButton>
+				<p:commandButton value="Annuler"  action="#{questionController.annuler}" update="form" binding="#{questionController.btnAnnuler}"></p:commandButton>
+				<p:commandButton value="Modifier"  action="#{questionController.modifier}" update="form" binding="#{questionController.btnModifier}"></p:commandButton>
+			</f:facet>
+		</p:toolbar>
+		<br/>
+		
+	<p:dataTable  var="dom" value="#{questionController.listQuestion}"  selectionMode="single" selection="#{questionController.selectedQuestion}" rowKey="#{dom.idQest}">
+ 
+ <f:facet name="header">
+            LISTE DES QUESTIONS
+        </f:facet>
+     <p:ajax event="rowSelect" process="@this"  update="form" listener="#{questionController.selectionnerLigne}"></p:ajax>
+   		
+   		<p:column headerText="Numéro" style="width:7%">
+        <h:outputText value="#{dom.numeroQuest}"/>
+        </p:column>
+        
+        <p:column headerText="Libellé">
+        <h:outputText value="#{dom.libelleQuest}"/>
+        </p:column>
+        
+        </p:dataTable>
+				
+				</h:form>
+			</ui:define>
+	</ui:composition>
+
+</html>

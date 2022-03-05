@@ -1,0 +1,1241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="body">
+		<h:form id="form">
+
+			<legend>AUDITION</legend>
+			<br />
+			<p:wizard flowListener="#{auditionController.onFlowProcess}">
+				<p:tab id="personne" title="Personne">
+					<p:panel header="Informations personnelles">
+						<p:messages />
+						<h:panelGrid columns="4" cellspacing="6" cellpadding="3">
+						<p:outputLabel  value="Numéro : " />
+						<p:inputText value="#{auditionController.numeroPersonne}" readonly="true"/>
+						
+						<p:outputLabel />
+						<p:outputLabel />
+						
+							<p:outputLabel for="input_nom" value="Nom: " />
+							<p:inputText id="input_nom" value="#{auditionController.personne.nomPers}" required="false" />
+
+							<p:outputLabel for="input_prenoms" value="Prénoms" />
+							<p:inputText id="input_prenoms" value="#{auditionController.personne.prenomsPers}" required="false" />
+
+							<p:outputLabel for="input_date_nais" value="Date de naissance" />
+							<p:calendar id="input_date_nais" value="#{auditionController.personne.dateNais}" pattern="dd/MM/yyyy" />
+
+							<p:outputLabel for="input_lieu" value="Lieu de naissance" />
+							<p:inputText id="input_lieu" value="#{auditionController.personne.lieuNais}" />
+
+							<p:outputLabel value="Genre"></p:outputLabel> 
+							<p:selectOneMenu value="#{auditionController.idGenre}">
+							<f:selectItem itemLabel="Selectionner" itemValue=""></f:selectItem>	
+							<f:selectItems value="#{auditionController.listeGenre}" var="var" itemLabel="#{var.libelleGenre}" itemValue="#{var.idGenre}"></f:selectItems>	
+							</p:selectOneMenu>
+
+
+							<p:outputLabel for="input_phone" value="Téléphone" />
+							<p:inputText id="input_phone" value="#{auditionController.personne.teephonePers}" />
+
+							<p:outputLabel for="input_mail" value="E-mail" />
+							<p:inputText id="input_mail" value="#{auditionController.personne.EMailPers}" />
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab id="bloc1" title="Q 1 à 14">
+					<p:panel header="Choix des réponses">
+						<p:messages />
+						<h:panelGrid columns="3">
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question1.numeroQuest}: "   />
+							<p:outputLabel
+								value="#{auditionController.question1.libelleQuest}"  style="width:15%"/>
+								
+							<p:selectOneRadio 
+								id="rd1" value="#{auditionController.idRep1}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question2.numeroQuest}: " />
+							<p:outputLabel value="#{auditionController.question2.libelleQuest}" />
+
+							<p:selectOneRadio id="rd2" value="#{auditionController.idRep2}" layout="grid" columns="4" unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}" var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question3.numeroQuest}: " />
+							<p:outputLabel value="#{auditionController.question3.libelleQuest}" />
+							<p:selectOneRadio
+								id="rd3" value="#{auditionController.idRep3}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question4.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question4.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd4" value="#{auditionController.idRep4}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question5.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question5.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd5" value="#{auditionController.idRep5}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question6.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question6.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd6" value="#{auditionController.idRep6}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question7.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question7.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd7" value="#{auditionController.idRep7}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question8.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question8.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd8" value="#{auditionController.idRep8}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question9.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question9.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd9" value="#{auditionController.idRep9}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question10.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question10.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd10" value="#{auditionController.idRep10}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question11.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question11.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd11" value="#{auditionController.idRep11}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								 value="#{auditionController.mot} #{auditionController.question12.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question12.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd12" value="#{auditionController.idRep12}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question13.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question13.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd13" value="#{auditionController.idRep13}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question14.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question14.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd14" value="#{auditionController.idRep14}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				
+				
+				
+				
+				<p:tab id="bloc2" title="Q 15 à 28">
+					<p:panel header="Choix des réponses">
+						<p:messages />
+						<h:panelGrid columns="3">
+						
+						<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question15.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question15.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd15" value="#{auditionController.idRep15}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+						
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question16.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question16.libelleQuest}" />
+								
+							<p:selectOneRadio 
+								id="rd16" value="#{auditionController.idRep16}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question17.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question17.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd17" value="#{auditionController.idRep17}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question18.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question18.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd18" value="#{auditionController.idRep18}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question19.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question19.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd19" value="#{auditionController.idRep19}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question20.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question20.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd20" value="#{auditionController.idRep20}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question21.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question21.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd21" value="#{auditionController.idRep21}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question22.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question22.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd22" value="#{auditionController.idRep22}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question23.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question23.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd23" value="#{auditionController.idRep23}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question24.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question24.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd24" value="#{auditionController.idRep24}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question25.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question25.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd25" value="#{auditionController.idRep25}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question26.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question26.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd26" value="#{auditionController.idRep26}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								 value="#{auditionController.mot} #{auditionController.question27.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question27.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd27" value="#{auditionController.idRep27}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question28.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question28.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd28" value="#{auditionController.idRep28}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				
+				
+				<p:tab id="bloc3" title="Q 29 à 42">
+					<p:panel header="Choix des réponses">
+						<p:messages />
+						<h:panelGrid columns="3">
+						
+						<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question29.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question29.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd29" value="#{auditionController.idRep29}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+						
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question30.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question30.libelleQuest}" />
+								
+							<p:selectOneRadio 
+								id="rd30" value="#{auditionController.idRep30}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question31.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question31.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd31" value="#{auditionController.idRep31}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question32.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question32.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd32" value="#{auditionController.idRep32}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question33.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question33.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd33" value="#{auditionController.idRep33}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question34.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question34.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd34" value="#{auditionController.idRep34}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question35.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question35.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd35" value="#{auditionController.idRep35}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question36.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question36.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd36" value="#{auditionController.idRep36}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question37.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question37.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd37" value="#{auditionController.idRep37}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question38.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question38.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd38" value="#{auditionController.idRep38}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question39.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question39.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd39" value="#{auditionController.idRep39}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question40.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question40.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd40" value="#{auditionController.idRep40}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								 value="#{auditionController.mot} #{auditionController.question41.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question41.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd41" value="#{auditionController.idRep41}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question42.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question42.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd42" value="#{auditionController.idRep42}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				
+				
+				<p:tab id="bloc4" title="Q 43 à 56">
+					<p:panel header="Choix des réponses">
+						<p:messages />
+						<h:panelGrid columns="3">
+						
+						<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question43.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question43.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd43" value="#{auditionController.idRep43}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+						
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question44.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question44.libelleQuest}" />
+								
+							<p:selectOneRadio 
+								id="rd44" value="#{auditionController.idRep44}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question45.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question45.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd45" value="#{auditionController.idRep45}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question46.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question46.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd46" value="#{auditionController.idRep46}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question47.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question47.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd47" value="#{auditionController.idRep47}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question48.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question48.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd48" value="#{auditionController.idRep48}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question49.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question49.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd49" value="#{auditionController.idRep49}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question50.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question50.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd50" value="#{auditionController.idRep50}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question51.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question51.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd51" value="#{auditionController.idRep51}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question52.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question52.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd52" value="#{auditionController.idRep52}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question53.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question53.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd53" value="#{auditionController.idRep53}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								 value="#{auditionController.mot} #{auditionController.question54.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question54.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd54" value="#{auditionController.idRep54}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question55.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question55.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd55" value="#{auditionController.idRep55}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question56.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question56.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd56" value="#{auditionController.idRep56}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				
+				
+				
+				<p:tab id="bloc5" title="Q 57 à 70">
+					<p:panel header="Choix des réponses">
+						<p:messages />
+						<h:panelGrid columns="3">
+						
+						<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question57.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question57.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd57" value="#{auditionController.idRep57}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+						
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question58.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question58.libelleQuest}" />
+								
+							<p:selectOneRadio 
+								id="rd58" value="#{auditionController.idRep58}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question59.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question59.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd59" value="#{auditionController.idRep59}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question60.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question60.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd60" value="#{auditionController.idRep60}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question61.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question61.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd61" value="#{auditionController.idRep61}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question62.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question62.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd62" value="#{auditionController.idRep62}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question63.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question63.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd63" value="#{auditionController.idRep63}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question64.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question64.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd64" value="#{auditionController.idRep64}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question65.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question65.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd65" value="#{auditionController.idRep65}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question66.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question66.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd66" value="#{auditionController.idRep66}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question67.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question67.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd67" value="#{auditionController.idRep67}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								 value="#{auditionController.mot} #{auditionController.question68.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question68.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd68" value="#{auditionController.idRep68}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question69.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question69.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd69" value="#{auditionController.idRep69}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question70.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question70.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd70" value="#{auditionController.idRep70}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				
+				
+				
+				<p:tab id="bloc6" title="Q 71 à 85">
+					<p:panel header="Choix des réponses">
+						<p:messages />
+						<h:panelGrid columns="3">
+						
+						<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question71.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question71.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd71" value="#{auditionController.idRep71}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+						
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question72.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question72.libelleQuest}" />
+								
+							<p:selectOneRadio 
+								id="rd72" value="#{auditionController.idRep72}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question73.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question73.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd73" value="#{auditionController.idRep73}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question74.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question74.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd74" value="#{auditionController.idRep74}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question75.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question75.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd75" value="#{auditionController.idRep75}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question76.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question76.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd76" value="#{auditionController.idRep76}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question77.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question77.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd77" value="#{auditionController.idRep77}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question78.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question78.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd78" value="#{auditionController.idRep78}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question79.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question79.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd79" value="#{auditionController.idRep79}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question80.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question80.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd80" value="#{auditionController.idRep80}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question81.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question81.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd81" value="#{auditionController.idRep81}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								 value="#{auditionController.mot} #{auditionController.question82.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question82.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd82" value="#{auditionController.idRep82}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question83.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question83.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd83" value="#{auditionController.idRep83}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question84.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question84.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd84" value="#{auditionController.idRep84}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+							
+							<p:outputLabel
+								value="#{auditionController.mot} #{auditionController.question85.numeroQuest}: " />
+							<p:outputLabel
+								value="#{auditionController.question85.libelleQuest}" />
+
+							<p:selectOneRadio
+								id="rd85" value="#{auditionController.idRep85}" layout="grid" columns="4"
+								unselectable="false" >
+								<f:selectItems value="#{auditionController.listeReponse}"
+									var="var" itemLabel="#{var.libelleRep}" itemValue="#{var.idRep}" />
+							</p:selectOneRadio>
+							
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				
+				
+				<p:tab id="confirm" title="Confirmation">
+					<p:panel header="Confirmation">
+					
+					<!-- Boite de confirmation -->
+					<!-- <p:dataTable id="table"  var="tata"
+						value="#{auditionController.listeChoixReponse}" rowKey="#{tata.idAudition}" emptyMessage="Aucun enregistrement" >
+						<f:facet name="header">RECAPITULATIF DE L'AUDITION</f:facet>
+						<p:column headerText="Numéro question" style="width:40%">#{tata.codeQuest}</p:column>
+						<p:column headerText="Réponse" style="width:60%">#{tata.libelleRep}</p:column>
+					</p:dataTable>
+ -->					
+						<p:toolbar>
+							<f:facet name="left">
+								<p:commandButton value="Enregistrer"
+									action="#{auditionController.enregistrer}" update="form"
+									binding="#{auditionController.btnEnregistrer}"></p:commandButton>
+								<p:commandButton value="Annuler"
+									action="#{auditionController.annuler}" update="form"
+									binding="#{auditionController.btnAnnuler}"></p:commandButton>
+								<p:commandButton value="Modifier"
+									action="#{auditionController.modifier}" update="form"
+									binding="#{auditionController.btnModifier}"></p:commandButton>
+							</f:facet>
+						</p:toolbar>
+					</p:panel>
+				</p:tab>
+			</p:wizard>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,16 @@
+Modification de la base de données
+	telephone  modifié
+	code_question
+	code_reponse
+	code_genre ont été rétiré
+	
+	
+	Ajout de coefficient dans reponse
+	
+	
+	
+	lazy Loading
+	Audition ===== Reponse
+	Audition ===== Question
+	Audition ===== 
+	

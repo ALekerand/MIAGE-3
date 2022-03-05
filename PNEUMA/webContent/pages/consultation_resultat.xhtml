@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/template.xhtml">
+			<ui:define name="body">
+				<h:form id="form">
+		<fieldset>
+ 	<legend>CONSLTATIONS DES RESULTATS D'AUDITION</legend>		
+	<h:panelGrid columns="4" cellpadding="10">
+	<p:outputLabel for="input_numero" value="Identifiant auditeur"></p:outputLabel>
+	<p:inputText id="input_numero" value="#{resultatAuditionController.numeroPers}" required="true" requiredMessage="Veuillez resseigner ce champ SVP"></p:inputText>		
+	<p:commandButton value="Rechercher" action="#{resultatAuditionController.rechercher}" update="form"></p:commandButton>
+	<p:commandButton value="Annuler"  action="#{resultatAuditionController.annuler}" update="form"></p:commandButton>
+	</h:panelGrid>
+	</fieldset>
+	
+        <p:tabView>
+        <p:tab title="Reponses">
+        	<p:dataTable  var="tata" value="#{resultatAuditionController.listAudition}" rowKey="#{var.idAudition}" 
+						 rows="15"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+ 		<f:facet name="header"> ETAT DES REPONSES </f:facet>
+   		
+   		<p:column headerText="Numero question" style="width:30%">
+        <h:outputText value="#{tata.question.numeroQuest}"/>
+        </p:column>
+        
+        <p:column headerText="Reponse">
+        <h:outputText value="#{tata.reponse.libelleRep}"/>
+        </p:column>
+        
+        <p:column headerText="Valeur">
+        <h:outputText value="#{tata.reponse.valeur}"/>
+        </p:column>
+        </p:dataTable>
+        </p:tab>
+        <p:tab title="Evaluation et Décision">
+            <p:dataTable  var="tata" value="#{resultatAuditionController.listObjetRecap}" rowKey="#{var.libelleDon}" 
+						 rows="15"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+ 		<f:facet name="header">TABLEAU DE DECISION</f:facet>
+   		
+   		<p:column headerText="Ligne">
+        <h:outputText value="#{tata.lettreLigne}"/>
+        </p:column>
+        
+        <p:column headerText="Q Col 1">
+        <h:outputText value="#{tata.auditionC1.question.numeroQuest}"/>
+        </p:column>
+        <p:column headerText="Valeur Col 1">
+        <h:outputText value="#{tata.auditionC1.reponse.valeur}"/>
+        </p:column>
+        
+        <p:column headerText="Q Col 2">
+        <h:outputText value="#{tata.auditionC2.question.numeroQuest}"/>
+        </p:column>
+        <p:column headerText="Valeur Col 2">
+        <h:outputText value="#{tata.auditionC2.reponse.valeur}"/>
+        </p:column>
+        
+        <p:column headerText="Q Col 3">
+        <h:outputText value="#{tata.auditionC3.question.numeroQuest}"/>
+        </p:column>
+        <p:column headerText="Valeur Col 3">
+        <h:outputText value="#{tata.auditionC3.reponse.valeur}"/>
+        </p:column>
+        
+        <p:column headerText="Q Col 3">
+        <h:outputText value="#{tata.auditionC4.question.numeroQuest}"/>
+        </p:column>
+        <p:column headerText="Valeur Col 4" >
+        <h:outputText value="#{tata.auditionC4.reponse.valeur}"/>
+        </p:column>
+        
+        
+        <p:column headerText="Q Col 5">
+        <h:outputText value="#{tata.auditionC5.question.numeroQuest}"/>
+        </p:column>
+        <p:column headerText="Valeur Col 5" style="width:3%">
+        <h:outputText value="#{tata.auditionC5.reponse.valeur}"/>
+        </p:column>
+        
+        
+        <p:column headerText="Total">
+        <h:outputText value="#{tata.totalLigne}"/>
+        </p:column>
+        
+        <p:column headerText="Don" style="width:15%">
+        <h:outputText value="#{tata.libelleDon}"/>
+        </p:column>
+        
+        </p:dataTable>
+        </p:tab>
+        
+    </p:tabView>
+				</h:form>
+			</ui:define>
+	</ui:composition>
+
+</html>
